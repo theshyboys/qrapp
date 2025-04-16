@@ -13,6 +13,9 @@ export default function QrScanner() {
         width: 250,
         height: 250,
       },
+      videoConstraints: {
+        facingMode: "environment", // ใช้กล้องหลัง
+      },
       fps: 5,
     });
 
