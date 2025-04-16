@@ -1,8 +1,9 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function ScanResultPage() {
+function ScanResultContent() {
   const searchParams = useSearchParams();
   const scannedData = searchParams.get('data');
 
@@ -19,5 +20,13 @@ export default function ScanResultPage() {
         Scan Again
       </button>
     </div>
+  );
+}
+
+export default function ScanResultPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ScanResultContent />
+    </Suspense>
   );
 }
