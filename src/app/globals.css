@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+#qr-reader video {
+  width: 100% !important;
+  border-radius: 8px;
+}
+
+#qr-reader div:first-child {
+  width: 100% !important;
+}
+
