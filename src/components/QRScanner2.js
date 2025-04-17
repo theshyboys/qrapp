@@ -27,6 +27,7 @@ export default function QRScanner2() {
           { facingMode: 'environment' },
           config,
           (decodedText) => {
+            beep();
             console.log('QR Code detected:', decodedText);
             //alert(decodedText);
             router.push(`/scan-result?data=${encodeURIComponent(decodedText)}`);
@@ -65,20 +66,34 @@ export default function QRScanner2() {
     };
   }, [router]);
 
+
+    // ฟังก์ชันสำหรับทำเสียงบี๊ปเมื่อสแกนสำเร็จ
+    const beep = () => {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          const audioContext = new AudioContext();
+          const oscillator = audioContext.createOscillator();
+          const gainNode = audioContext.createGain();
+          
+          oscillator.connect(gainNode);
+          gainNode.connect(audioContext.destination);
+          
+          oscillator.type = 'sine';
+          oscillator.frequency.value = 800;
+          gainNode.gain.value = 0.5;
+          
+          oscillator.start(audioContext.currentTime);
+          oscillator.stop(audioContext.currentTime + 0.2);
+        } catch (error) {
+          console.error('Error playing beep sound:', error);
+        }
+      };
+
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       {/* Container สำหรับ Html5Qrcode */}
       <div id="reader" ref={videoRef} className="w-full h-full" />
       
-      {/* Overlay สำหรับ UI เพิ่มเติม */}
-      {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="border-2 border-white rounded-lg w-64 h-64 relative">
-          <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-white"></div>
-          <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-white"></div>
-          <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-white"></div>
-          <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-white"></div>
-        </div>
-      </div> */}
     </div>
   );
 }
