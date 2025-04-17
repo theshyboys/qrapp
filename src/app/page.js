@@ -1,7 +1,7 @@
 
 
 import Image from "next/image";
-import QrScanner from "./scan/page"
+import ScanPage from "./scan2/page"
 
 /*
 git init
@@ -36,7 +36,7 @@ https://th.qr-code-generator.com/
 export default function Home() {
   return (
     <div>
-      <QrScanner/>
+      <ScanPage/>
     </div>
   );
 }

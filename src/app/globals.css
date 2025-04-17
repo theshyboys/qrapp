@@ -26,6 +26,32 @@ body {
 }
 
 
+/* ป้องกันการ scroll บนมือถือ */
+body {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* ปรับขนาด video element */
+#reader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+#reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+
+
+
+/*
 #qr-reader video {
   width: 100% !important;
   border-radius: 8px;
@@ -34,4 +60,35 @@ body {
 #qr-reader div:first-child {
   width: 100% !important;
 }
+*/
 
+/*
+video {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: cover !important;
+}
+*/
+/*
+#html5qr-code-full-region video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+}*/
+
+/*
+#reader video {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: cover !important;
+}*/
+
+/* Optional: Style the QR code scanning box */
+/*
+#reader .html5-qrcode-element {
+  border: 2px dashed #fff !important;
+  border-radius: 8px !important;
+}*/
