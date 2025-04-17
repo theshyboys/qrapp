@@ -29,7 +29,7 @@ export default function QRScanner2() {
           (decodedText) => {
             console.log('QR Code detected:', decodedText);
             //alert(decodedText);
-            router.push(`/scan-result2?data=${encodeURIComponent(decodedText)}`);
+            router.push(`/scan-result?data=${encodeURIComponent(decodedText)}`);
             // ทำอะไรกับข้อมูลที่ได้
           },
           (errorMessage) => {
@@ -70,14 +70,14 @@ export default function QRScanner2() {
       <div id="reader" ref={videoRef} className="w-full h-full" />
       
       {/* Overlay สำหรับ UI เพิ่มเติม */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="border-2 border-white rounded-lg w-64 h-64 relative">
           <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-white"></div>
           <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-white"></div>
           <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-white"></div>
           <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-white"></div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
