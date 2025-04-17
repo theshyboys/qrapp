@@ -30,6 +30,7 @@ export default function QRScanner2() {
             console.log('QR Code detected:', decodedText);
             //alert(decodedText);
             router.push(`/scan-result?data=${encodeURIComponent(decodedText)}`);
+            scannerRef.current.stop().catch(console.error);
             // ทำอะไรกับข้อมูลที่ได้
           },
           (errorMessage) => {
